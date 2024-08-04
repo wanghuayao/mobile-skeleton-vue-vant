@@ -4,6 +4,8 @@ import { RouterView } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 import { storeToRefs } from 'pinia'
 
+import 'vant/lib/index.css'
+
 const userStore = useUserStore()
 
 const { user } = storeToRefs(userStore)
