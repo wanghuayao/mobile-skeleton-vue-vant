@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { AuthApi } from '@/api/auth'
 import router from '@/router'
 import { useUserStore } from '@/stores/user'
 import { ref } from 'vue'
@@ -15,9 +16,10 @@ const username = ref('')
 const password = ref('')
 
 // method
-const onSubmit = (values: { username: string; password: string }) => {
-  console.log(values, values.username)
-  userStore.updateUser({ username: values.username, name: values.username })
+const onSubmit = async (values: { username: string; password: string }) => {
+  const result = await AuthApi.login({ ...values })
+
+  userStore.updateUser({ username: result.username, name: result.name })
 
   router.push({ name: 'Home', replace: true })
 }
@@ -38,7 +40,7 @@ const onSubmit = (values: { username: string; password: string }) => {
       <van-field
         v-model="password"
         type="password"
-        name="username"
+        name="password"
         label="密码"
         placeholder="密码"
         :rules="[{ required: true, message: '请填写密码' }]"

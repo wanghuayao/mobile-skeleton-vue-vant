@@ -7,13 +7,27 @@ import App from './App.vue'
 import router from './router'
 import { Button, CellGroup, Field, Form } from 'vant'
 
-const vantComponents = [Form, Field, CellGroup, Button]
+async function enableMocking() {
+  if (process.env.NODE_ENV !== 'development') {
+    return
+  }
 
-const app = createApp(App)
+  const { worker } = await import('./mocks/browser')
 
-app.use(createPinia())
-app.use(router)
+  // `worker.start()` returns a Promise that resolves
+  // once the Service Worker is up and ready to intercept requests.
+  return worker.start()
+}
 
-vantComponents.forEach((item) => app.use(item))
+enableMocking().then(() => {
+  const vantComponents = [Form, Field, CellGroup, Button]
 
-app.mount('#app')
+  const app = createApp(App)
+
+  app.use(createPinia())
+  app.use(router)
+
+  vantComponents.forEach((item) => app.use(item))
+
+  app.mount('#app')
+})

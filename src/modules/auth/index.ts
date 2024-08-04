@@ -1,4 +1,4 @@
-import LoginView from './views/LoginView.vue'
+import LoginView from './LoginView.vue'
 
 export const Auth = [
   {
