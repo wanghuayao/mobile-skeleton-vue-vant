@@ -43,3 +43,7 @@ npm run test:unit
 ```sh
 npm run lint
 ```
+
+### resources
+
+- icons:https://heroicons.com/

@@ -5,6 +5,7 @@ import { useUserStore } from '@/stores/user'
 import { storeToRefs } from 'pinia'
 
 import 'vant/lib/index.css'
+import './style.css'
 
 const userStore = useUserStore()
 

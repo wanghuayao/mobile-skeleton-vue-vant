@@ -5,7 +5,7 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
-import { Button, CellGroup, Field, Form } from 'vant'
+import { Button, CellGroup, Field, Form, Icon } from 'vant'
 
 async function enableMocking() {
   if (process.env.NODE_ENV !== 'development') {
@@ -20,7 +20,7 @@ async function enableMocking() {
 }
 
 enableMocking().then(() => {
-  const vantComponents = [Form, Field, CellGroup, Button]
+  const vantComponents = [Form, Field, CellGroup, Button, Icon]
 
   const app = createApp(App)
 
