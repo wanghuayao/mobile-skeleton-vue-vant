@@ -1,3 +1,7 @@
+:root {
+  --van-cell-value-font-size: 16px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
